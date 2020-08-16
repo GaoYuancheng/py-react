@@ -1,4 +1,3 @@
-
 interface Route {
   path: string;
   component: string;
@@ -7,52 +6,62 @@ interface Route {
 
 interface MenuConfigItem {
   name: string;
-  routes?: Route[]
+  routes?: Route[];
 }
 
-const menuConfig:MenuConfigItem[] = [
+const menuConfig: MenuConfigItem[] = [
   {
     name: 'py',
     routes: [
-      { path: '/py/home', component: '@/pages/Home',name: 'name-home' },
+      { path: '/py/home', component: '@/pages/Home', name: 'name-home' },
       { path: '/py/zhihu', component: '@/pages/Zhihu', name: 'name-zhihu' },
-      { path: '/py/toutiao', component: '@/pages/Toutiao', name: 'name-toutiao' },
+      {
+        path: '/py/toutiao',
+        component: '@/pages/Toutiao',
+        name: 'name-toutiao',
+      },
       { path: '/py/upload', component: '@/pages/Upload', name: 'name-upload' },
-    ]
+    ],
   },
   {
     name: 'node',
     routes: [
-      { path: '/node/test', component: '@/pages/Test',name: 'name-test' },
-    ]
+      { path: '/node/test', component: '@/pages/Test', name: 'name-test' },
+    ],
   },
   {
-    name: 'name3',
-  }
-]
+    name: 'front',
+    routes: [
+      {
+        path: '/front/Components',
+        component: '@/pages/Components',
+        name: 'front-Components',
+      },
+    ],
+  },
+];
 
 // 构造 umi 所需要的 routes
-const routerConstructor = (menuConfig:MenuConfigItem[]) => {
-  let resultRoutes:Route[] = []
+const routerConstructor = (menuConfig: MenuConfigItem[]) => {
+  let resultRoutes: Route[] = [];
   menuConfig.forEach(menu => {
-    const { routes } = menu
-    if( routes ){
-      resultRoutes.push(...routes)
+    const { routes } = menu;
+    if (routes) {
+      resultRoutes.push(...routes);
     }
-  })
-  return resultRoutes
-}
+  });
+  return resultRoutes;
+};
 
 const routes = [
   { path: '/login', component: '@/pages/Login' },
   {
-    path: '/', 
+    path: '/',
     component: '@/layouts',
-    routes: routerConstructor(menuConfig)
+    routes: routerConstructor(menuConfig),
   },
   // 404 页面
   { path: '*', component: '@/pages/NotFound' },
-]
+];
 
-
-export { routes, menuConfig }
+export { routes, menuConfig };
