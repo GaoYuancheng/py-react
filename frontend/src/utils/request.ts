@@ -1,6 +1,6 @@
 import { extend } from 'umi-request';
 import { message } from 'antd';
- 
+
 const codeMessage = {
   200: '服务器成功返回请求的数据。',
   201: '新建或修改数据成功。',
@@ -19,26 +19,36 @@ const codeMessage = {
   504: '网关超时。',
 };
 
+const prefix = 'http://127.0.0.1:5000'; // 请求5000 端口下的 接口
+
 const request = extend({
   //配置  https://gitee.com/KimGuBa/umi-request
-  // prefix: 'http://127.0.0.1:5000'
+  // prefix: 'http://127.0.0.1:5000', // 请求5000 端口下的 接口
+  //错误处理
+  // errorHandler: err => {
+  //   console.log(err.response);
+  //   return { success: false, message: '未连接到服务器' };
+  // },
 });
 
-request.interceptors.request.use((url, options)=>{
+request.interceptors.request.use((url, options) => {
+  if (!url.startsWith('/mock')) {
+    url = prefix + url;
+  }
   return {
     options: {
       ...options,
-      // credentials: 'include'
+      credentials: 'include', // 允许跨域发送cookie
     },
-    url : '/api' + url
-    // url,
-  }
-})
+    // url : '/api' + url
+    url,
+  };
+});
 
-request.interceptors.response.use( async(response) => {
+request.interceptors.response.use(async response => {
   const res = await response.clone().json();
-  if( !res.success ){
-    message.error(res.message)
+  if (!res?.success) {
+    message.error(res.message);
   }
   // if(data && data.isLogin) {
   //   location.href = '登录url';
@@ -52,6 +62,4 @@ request.interceptors.response.use( async(response) => {
   // );
 });
 
-
-export default request
- 
+export default request;

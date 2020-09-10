@@ -13,29 +13,38 @@ const menuConfig: MenuConfigItem[] = [
   {
     name: 'py',
     routes: [
-      { path: '/py/home', component: '@/pages/Home', name: 'name-home' },
-      { path: '/py/zhihu', component: '@/pages/Zhihu', name: 'name-zhihu' },
+      { path: '/py/home', component: '@/pages/py/Home', name: 'name-home' },
+      { path: '/py/zhihu', component: '@/pages/py/Zhihu', name: 'name-zhihu' },
       {
         path: '/py/toutiao',
-        component: '@/pages/Toutiao',
+        component: '@/pages/py/Toutiao',
         name: 'name-toutiao',
       },
-      { path: '/py/upload', component: '@/pages/Upload', name: 'name-upload' },
+      {
+        path: '/py/upload',
+        component: '@/pages/py/Upload',
+        name: 'name-upload',
+      },
     ],
   },
   {
     name: 'node',
     routes: [
-      { path: '/node/test', component: '@/pages/Test', name: 'name-test' },
+      { path: '/node/test', component: '@/pages/node/Test', name: 'name-test' },
     ],
   },
   {
-    name: 'front',
+    name: 'fe',
     routes: [
       {
-        path: '/front/Components',
-        component: '@/pages/Components',
-        name: 'front-Components',
+        path: '/fe/CodeMirror',
+        component: '@/pages/fe/CodeMirror',
+        name: 'CodeMirror',
+      },
+      {
+        path: '/fe/AntdFormComponents',
+        component: '@/pages/fe/AntdFormComponents',
+        name: 'AntdFormComponents',
       },
     ],
   },
@@ -58,10 +67,12 @@ const routes = [
   {
     path: '/',
     component: '@/layouts',
-    routes: routerConstructor(menuConfig),
+    routes: [
+      ...routerConstructor(menuConfig),
+      { path: '*', component: '@/pages/NotFound' },
+    ],
   },
   // 404 页面
-  { path: '*', component: '@/pages/NotFound' },
 ];
 
 export { routes, menuConfig };

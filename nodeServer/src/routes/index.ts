@@ -1,19 +1,21 @@
-import login from './login'
-import session from './session'
+// 如果有返回有data 则自动加上success: true
 
-const nodeTestGet = async (ctx, next)  => {
+import login from "./login";
+import session from "./session";
+import httpStatus from "./httpStatus";
+
+const nodeTestGet = async (ctx, next) => {
   ctx.response.body = {
     data: {
-      msg: 'ok',
+      msg: "ok"
     }
-  }
-}
+  };
+};
 
-const nodeTestPost = async (ctx, next)  => {
-  console.log(ctx.request.body)
-  ctx.response.body = 'post sss'
-}
-
+const nodeTestPost = async (ctx, next) => {
+  // console.log(ctx.request.body)
+  ctx.response.body = "post sss";
+};
 
 // export default {
 //   'GET /nodeTestGet': nodeTestGet,
@@ -22,12 +24,13 @@ const nodeTestPost = async (ctx, next)  => {
 // }
 
 module.exports = {
-  'GET /nodeTestGet': nodeTestGet,
-  'POST /nodeTestPost': nodeTestPost,
+  "GET /nodeTestGet": nodeTestGet,
+  "POST /nodeTestPost": nodeTestPost,
   ...login,
-  ...session
+  ...session,
+  ...httpStatus
+};
+console.log(process.env.test);
 
-}
-
-//test 
+//test
 // curl localhost:5000/nodeTestGet

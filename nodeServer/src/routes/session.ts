@@ -1,20 +1,19 @@
-
-const getSession = (ctx) => {
+const getSession = ctx => {
   ctx.response.body = {
     data: {
-      session:ctx.session
+      session: ctx.session
     }
-  }
-}
-const clearSession = (ctx) => {
-  ctx.session = null
+  };
+  // ctx.status = 403;
+};
+const clearSession = ctx => {
+  ctx.session = null;
   ctx.response.body = {
     data: {}
-  }
-}
-
+  };
+};
 
 export default {
-  'GET /getSession': getSession,
-  'GET /clearSession': clearSession
-}
+  "GET /getSession": getSession,
+  "GET /clearSession": clearSession
+};
