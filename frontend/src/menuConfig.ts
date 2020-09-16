@@ -49,9 +49,14 @@ const menuConfig: MenuConfigItem[] = [
         name: 'AntdFormComponents',
       },
       {
-        path: '/fe/TextScrollExample',
+        path: '/fe/TextScroll',
         component: '@/pages/fe/TextScrollExample',
-        name: 'TextScrollExample',
+        name: 'TextScroll',
+      },
+      {
+        path: '/fe/InputEdit',
+        component: '@/pages/fe/InputEditExample',
+        name: 'InputEdit',
       },
     ],
   },
