@@ -1,3 +1,5 @@
+import { join } from 'lodash';
+
 interface Route {
   path: string;
   component: string;
@@ -46,9 +48,20 @@ const menuConfig: MenuConfigItem[] = [
         component: '@/pages/fe/AntdFormComponents',
         name: 'AntdFormComponents',
       },
+      {
+        path: '/fe/TextScrollExample',
+        component: '@/pages/fe/TextScrollExample',
+        name: 'TextScrollExample',
+      },
     ],
   },
 ];
+
+// const fs = require('fs');
+// const path = require('path');
+// console.log(path.join(__filename, '../pages'));
+
+// console.log(fs.readFileSync(path.join(__filename, '../pages')));
 
 // 构造 umi 所需要的 routes
 const routerConstructor = (menuConfig: MenuConfigItem[]) => {

@@ -19,6 +19,8 @@ const { SubMenu } = Menu;
 
 console.log(routes, menuConfig);
 
+const theme: 'light' | 'dark' = 'dark';
+
 export default (props: any) => {
   const pathname = props.location.pathname;
   const [_, defaultTopMenuSelected] = pathname.split('/');
@@ -37,7 +39,7 @@ export default (props: any) => {
         mode="inline"
         selectedKeys={[pathname]}
         // defaultOpenKeys={['sub1']}
-        theme="dark"
+        theme={theme}
         style={{ height: '100%', borderRight: 0 }}
       >
         {sideMenuObj.routes.map(item => (
@@ -53,7 +55,7 @@ export default (props: any) => {
   const topMenuRender = () => {
     return (
       <Menu
-        theme="dark"
+        theme={theme}
         mode="horizontal"
         selectedKeys={[topMenuSelected]}
         // defaultSelectedKeys = {menuConfig.find(menu => menu.name === '')}
@@ -106,7 +108,7 @@ export default (props: any) => {
           {sideMenuRender()}
         </Sider>
         <Layout
-          style={{ padding: '0 24px 24px', height: 'calc(100vh - 64px)' }}
+          style={{ padding: '0 24px 24px', minHeight: 'calc(100vh - 64px)' }}
         >
           <Breadcrumb style={{ margin: '16px 0' }}>
             <Breadcrumb.Item>Home</Breadcrumb.Item>

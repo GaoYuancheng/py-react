@@ -1,8 +1,7 @@
-import React, { useEffect, useRef, useState } from '@alipay/bigfish/react';
+import React, { useEffect, useRef, useState } from 'react';
 // import styles from './index.less';
 
 let timer: any = null;
-const transitionTime = 300;
 let scrollX = 0;
 const marginRight = 48;
 const setScrollX = (value: number) => {
@@ -11,9 +10,15 @@ const setScrollX = (value: number) => {
 
 interface TextScrollProps {
   text?: string;
+  width: number;
+  transitionTime?: number;
 }
 
-const TextScroll: React.FC<TextScrollProps> = ({ text }) => {
+const TextScroll: React.FC<TextScrollProps> = ({
+  text,
+  width,
+  transitionTime = 300,
+}) => {
   const textArea = useRef<any>();
   const textAreaCopy = useRef<any>();
   const textContent = useRef<any>();
@@ -22,7 +27,8 @@ const TextScroll: React.FC<TextScrollProps> = ({ text }) => {
 
   useEffect(() => {
     const initWidth = textArea.current.scrollWidth;
-    if (initWidth > 404) {
+    console.log(initWidth);
+    if (initWidth > width - 76) {
       if (timer) clearInterval(timer);
       textAreaCopy.current.innerText = text;
       textContent.current.style.marginRight = `${marginRight}px`;
@@ -32,7 +38,7 @@ const TextScroll: React.FC<TextScrollProps> = ({ text }) => {
 
         setScrollX(newScrollX);
         if (-scrollX > initWidth + marginRight - 10) {
-          setRefreshCount((prev) => {
+          setRefreshCount(prev => {
             scrollX = 0;
 
             return prev + 1;
@@ -42,7 +48,7 @@ const TextScroll: React.FC<TextScrollProps> = ({ text }) => {
       }, transitionTime);
     } else {
       textContent.current.style.marginRight = 0;
-      setRefreshCount((prev) => {
+      setRefreshCount(prev => {
         scrollX = 0;
         return prev + 1;
       });
@@ -57,7 +63,7 @@ const TextScroll: React.FC<TextScrollProps> = ({ text }) => {
 
   return (
     <div
-      // className={styles.textScroll}
+      style={{ overflow: 'hidden', width, whiteSpace: 'nowrap' }}
       key={refreshCount}
     >
       <div
