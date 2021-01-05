@@ -11,7 +11,37 @@ const layout = {
 const tailLayout = {
   wrapperCol: { offset: 8, span: 16 },
 };
-const a = 1
+
+const SERVICE_LIST = [
+  {
+    text: 'getNodeTest',
+    service: (params: any) => service.test.getNodeTest(params),
+  },
+  {
+    text: 'getSession',
+    service: (params: any) => service.test.getSession(params),
+  },
+  {
+    text: 'clearSession',
+    service: (params: any) => service.test.clearSession(params),
+  },
+  {
+    text: 'postNodeTest',
+    service: (params: any) => service.test.postNodeTest(params),
+  },
+  {
+    text: 'get401',
+    service: (params: any) => service.test.get401(params),
+  },
+  {
+    text: 'getCache',
+    service: (params: any) => service.test.getCache(params),
+  },
+  {
+    text: 'clearCache',
+    service: (params: any) => service.test.clearCache(params),
+  },
+];
 
 const Login = () => {
   const { setUserInfo } = useModel('userInfo');
@@ -30,28 +60,6 @@ const Login = () => {
 
   const onFinishFailed = (errorInfo: any) => {
     console.log('Failed:', errorInfo);
-  };
-
-  const getNodeTest = async () => {
-    const res = await service.test.getNodeTest({});
-    if (res?.success) {
-      message.success('登录成功');
-    }
-  };
-
-  const getSession = async () => {
-    const res = await service.test.getSession({});
-  };
-  const clearSession = async () => {
-    const res = await service.test.clearSession({});
-  };
-
-  const postNodeTest = async () => {
-    const res = await service.test.postNodeTest({ name: '' });
-  };
-
-  const get401 = async () => {
-    const res = await service.test.get401();
   };
 
   return (
@@ -94,11 +102,11 @@ const Login = () => {
         </Form.Item>
       </Form>
       <div>
-        <Button onClick={getNodeTest}>getNodeTest</Button>
-        <Button onClick={postNodeTest}>postNodeTest</Button>
-        <Button onClick={getSession}>getSession</Button>
-        <Button onClick={clearSession}>clearSession</Button>
-        <Button onClick={get401}>get401</Button>
+        {SERVICE_LIST.map(item => (
+          <Button onClick={() => item.service({})} key={item.text}>
+            {item.text}
+          </Button>
+        ))}
       </div>
     </div>
   );

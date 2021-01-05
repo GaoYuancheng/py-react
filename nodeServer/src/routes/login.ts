@@ -1,25 +1,25 @@
-const login = ctx => {
+const login = (ctx) => {
   const { username = "", password = "" } = ctx.request.body;
   console.log(ctx.request.body, "");
   if (username === "admin" && password === "123456") {
     ctx.session.isLogin = true;
     ctx.response.body = {
       data: {
-        username: "admin"
-      }
+        username: "admin",
+      },
     };
     ctx.response.session = {
-      isLogin: true
+      isLogin: true,
     };
   } else {
     ctx.response.body = {
-      message: "用户名或密码不正确"
+      message: "用户名或密码不正确",
     };
   }
 };
 
 export default {
-  "POST /login": login
+  "POST /login": login,
 };
 
 // test

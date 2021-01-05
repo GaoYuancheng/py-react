@@ -3,12 +3,13 @@
 import login from "./login";
 import session from "./session";
 import httpStatus from "./httpStatus";
+import cache from "./cache";
 
 const nodeTestGet = async (ctx, next) => {
   ctx.response.body = {
     data: {
-      msg: "ok"
-    }
+      msg: "ok",
+    },
   };
 };
 
@@ -28,9 +29,9 @@ module.exports = {
   "POST /nodeTestPost": nodeTestPost,
   ...login,
   ...session,
-  ...httpStatus
+  ...httpStatus,
+  ...cache,
 };
-console.log(process.env.test);
 
 //test
 // curl localhost:5000/nodeTestGet

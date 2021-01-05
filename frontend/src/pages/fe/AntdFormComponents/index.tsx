@@ -77,6 +77,12 @@ export default () => {
           确认
         </Button>
       </Form.Item>
+      <div
+        dangerouslySetInnerHTML={{
+          __html: `this is a hyperlink <a href="http://www.baidu.com">baidu</a> have a look!
+`,
+        }}
+      ></div>
     </Form>
   );
 };

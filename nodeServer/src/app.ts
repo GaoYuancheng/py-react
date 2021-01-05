@@ -21,7 +21,7 @@ const app = new Koa();
 app.keys = ["some secret hurr"]; // 这个是配合signed属性的签名key
 const session_config = {
   key: "koa:sess1", //默认
-  maxAge: 400000, //cookie过期时间
+  maxAge: 4000, //cookie过期时间
   autoCommit: true,
   overwrite: true, //默认
   // httpOnly: true, //true表示只有服务端能获取cookie
@@ -65,7 +65,7 @@ app.use(async (ctx, next) => {
   }
   // TODO: 怎么设置cookie 的samesite 和secure属性
 
-  console.log("响应 => 第一层中间件");
+  console.log("响应 => 第一层中间件", ctx.session.isLogin);
 });
 
 app.use(async (ctx, next) => {

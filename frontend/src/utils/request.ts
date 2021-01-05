@@ -19,10 +19,10 @@ const codeMessage = {
   504: '网关超时。',
 };
 
-const prefix = 'http://127.0.0.1:5000'; // 请求5000 端口下的 接口
+// const prefix = 'http://127.0.0.1:5000'; // 请求5000 端口下的 接口
 
 const request = extend({
-  //配置  https://gitee.com/KimGuBa/umi-request
+  //配置  https://github.com/umijs/umi-request/blob/master/README_zh-CN.md
   // prefix: 'http://127.0.0.1:5000', // 请求5000 端口下的 接口
   //错误处理
   // errorHandler: err => {
@@ -32,16 +32,16 @@ const request = extend({
 });
 
 request.interceptors.request.use((url, options) => {
-  if (!url.startsWith('/mock')) {
-    url = prefix + url;
-  }
+  // if (!url.startsWith('/mock')) {
+  //   url = prefix + url;
+  // }
   return {
     options: {
       ...options,
       credentials: 'include', // 允许跨域发送cookie
     },
-    // url : '/api' + url
-    url,
+    url: '/api' + url,
+    // url,
   };
 });
 
