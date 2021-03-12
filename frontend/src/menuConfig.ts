@@ -1,5 +1,3 @@
-import { join } from 'lodash';
-
 interface Route {
   path: string;
   component: string;
@@ -84,7 +82,7 @@ const routes = [
   { path: '/login', component: '@/pages/Login' },
   {
     path: '/',
-    component: '@/layouts',
+    component: '@/layouts/index',
     routes: [
       ...routerConstructor(menuConfig),
       { path: '*', component: '@/pages/NotFound' },

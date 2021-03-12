@@ -77,7 +77,7 @@ export default (props: any) => {
     _ _   _ ____  _____   ( (____   ___  ____  _____ _| |_| |__  _ ____   ____   
    | | | | |  _ \| ___ |   \____ \ / _ \|    \| ___ (_   _)  _ \| |  _ \ / _  |  
    | | |_| | |_| | ____|   _____) ) |_| | | | | ____| | |_| | | | | | | ( (_| |  
-   |_|\__  |  __/|_____)  (______/ \___/|_|_|_|_____)  \__)_| |_|_|_| |_|\___ |  
+   |_|\__  |  __/|_____) 111122 (______/ \___/|_|_|_|_____)  \__)_| |_|_|_| |_|\___ |  
      (____/|_|                                                          (_____|    `);
     if (props.location.pathname === '/') {
       history.push('/py/home');
@@ -88,18 +88,18 @@ export default (props: any) => {
     <Layout>
       <Header className="header">
         <Row justify="space-between">
-          <div>
+          <Row>
             <div
               style={{
                 width: '122px',
                 height: '31px',
                 background: 'rgba(255, 255, 255, 0.2)',
                 margin: '16px 28px 16px 0',
-                float: 'left',
               }}
             />
-            {topMenuRender()}
-          </div>
+            <div>{topMenuRender()}</div>
+          </Row>
+
           <div style={{ color: '#fff' }}>{userInfo.username}</div>
         </Row>
       </Header>

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Upload, Row, Col, message } from 'antd';
 import { Controlled as CodeMirror } from 'react-codemirror2';
-import _ from 'lodash';
+import { debounce } from 'lodash';
 // require('codemirror/mode/xml/xml');
 import 'codemirror/mode/xml/xml';
 import 'codemirror/mode/javascript/javascript';
@@ -33,7 +33,7 @@ export default () => {
   // console.log(mockData);
   console.log(typeof fileContent, isJSON(fileContent));
 
-  const debounceSetTimer = _.debounce(() => {
+  const debounceSetTimer = debounce(() => {
     console.log('ss');
   }, 500);
 
