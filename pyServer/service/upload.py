@@ -1,4 +1,3 @@
-# 知乎热榜
 import requests
 import json
 from flask import request

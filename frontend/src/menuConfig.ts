@@ -56,6 +56,11 @@ const menuConfig: MenuConfigItem[] = [
         component: '@/pages/fe/InputEditExample',
         name: 'InputEdit',
       },
+      {
+        path: '/fe/Password',
+        component: '@/pages/fe/Password',
+        name: 'Password',
+      },
     ],
   },
 ];

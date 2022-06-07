@@ -1,7 +1,61 @@
-
 .normal {
 }
 
 .title {
   background: rgb(121, 242, 157);
+}
+
+.card {
+  display: flex;
+  height: 136px;
+  width: 430px;
+  border-radius: 12px;
+  background-color: #fff0f1;
+  padding: 0 24px 0 30px;
+  margin-top: 10px;
+  align-items: center;
+}
+
+.card-info {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+.card-title {
+  font-size: 24px;
+  font-weight: bolder;
+}
+
+.card-sub-title {
+  font-size: 22px;
+  padding-right: 10px;
+}
+
+.card-btn {
+  width: 108px;
+  height: 45px;
+  border-radius: 8px;
+  font-size: 20px;
+  font-weight: bolder;
+  background-color: #f00;
+  color: #fff;
+  line-height: 45px;
+  text-align: center;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+}
+
+.not-allow {
+  cursor: not-allowed;
+}
+
+.ellipsis-two-lines {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  -ms-text-overflow: ellipsis;
+  text-overflow: ellipsis;
 }

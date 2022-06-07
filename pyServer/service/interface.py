@@ -1,7 +1,5 @@
-
-
-from flask import Flask, request
 import json
+from flask import Flask, request
 
 
 def test():
